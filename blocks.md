@@ -26,6 +26,7 @@
 - [Nvidia Gpu](#nvidia-gpu)
 - [Pacman](#pacman)
 - [Pomodoro](#pomodoro)
+- [Radeontop](#radeontop)
 - [Sound](#sound)
 - [Speed Test](#speed-test)
 - [Taskwarrior](#taskwarrior)
@@ -1220,6 +1221,73 @@ Key | Values | Required | Default
 `message` | i3-nagbar message when timer expires. | No | `Pomodoro over! Take a break!`
 `break_message` | i3-nagbar message when break is over. | No | `Break over! Time to work!`
 `nag_path` | i3-nagbar binary path. | No | `i3-nagbar`
+
+###### [↥ back to top](#list-of-available-blocks)
+
+## Radeontop
+
+Creates a block which uses [radeontop (fork that implemets JSON output)](https://github.com/TilCreator/radeontop.git) to aquire information about a Radeon GPU.
+
+#### Examples
+
+```toml
+[[block]]
+block = "radeontop"
+interval = 1
+vram_info = 70
+vram_warning = 80
+vram_critical = 90
+format = "{gpu} {vram_used_percentage} {vram_used_bytes}"
+```
+
+#### Options
+
+Key | Values | Required | Default
+----|--------|----------|--------
+`interval` | Update interval in seconds. | No | `1`
+`mem` | Sets the `--mem` flag for radeontop. | No | `false`
+`bus` | Sets the `--bus` arg for radeontop. | No | `None`
+`path` | Sets the `--path` arg for radeontop. | No | `None`
+`ticks` | Sets the `--ticks` arg for radeontop. | No | `None`
+`gpu_info` | Minimum gpu usage, where state is set to info. | No | `30`
+`gpu_warning` | Minimum gpu usage, where state is set to warning. | No | `60`
+`gpu_critical` | Minimum gpu usage, where state is set to critical. | No | `90`
+`vram_info` | Minimum vram usage, where state is set to info. | No | `30`
+`vram_warning` | Minimum vram usage, where state is set to warning. | No | `60`
+`vram_critical` | Minimum vram usage, where state is set to critical. | No | `90`
+`format` | Format override. | No | `{gpu} {vram_used_percentage}`
+
+### Available Format Keys
+
+ Key | Value | Type
+-----|-------|-----
+`bus` | Bus number of the GPU | Hex (Int)
+`gpu` | Graphics pipe | Percents (Float)
+`ee` | Event Engine | Percents (Float)
+`vgt` | Vertex Grouper + Tesselator | Percents (Float)
+`ta` | Texture Addresser | Percents (Float)
+`tc` | Texture Cache | Percents (Float)
+`sx` | Shader Export | Percents (Float)
+`sh` | Sequencer Instruction Cache | Percents (Float)
+`spi` | Shader Interpolator | Percents (Float)
+`smx` | Shader Memory Exchange | Percents (Float)
+`sc` | Scan Converter | Percents (Float)
+`pa` | Primitive Assembly | Percents (Float)
+`db` | Depth Block | Percents (Float)
+`cb` | Color Block | Percents (Float)
+`cr` | Clip Rectangle | Percents (Float)
+`vram_used_percentage` | Video Ram used | Percents (Float)
+`vram_used_bytes` | Video Ram used | Bytes (Intger)
+`vram_max_bytes` | Video Ram size | Bytes (Intger)
+`gtt_used_percentage` | Graphics Translation Table used | Percents (Float)
+`gtt_used_bytes` | Graphics Translation Table used | Bytes (Intger)
+`gtt_max_bytes` | Graphics Translation Table size | Bytes (Intger)
+`mclk_used_percentage` | Memory Clock used | Percents (Float)
+`mclk_used_hz` | Memory Clock used | Hz (Float)
+`mclk_max_hz` | Memory Clock max | Hz (Float)
+`sclk_used_percentage` | Shader Clock used | Percents (Float)
+`sclk_used_hz` | Shader Clock used | Hz (Float)
+`sclk_max_hz` | Shader Clock max | Hz (Float)
 
 ###### [↥ back to top](#list-of-available-blocks)
 

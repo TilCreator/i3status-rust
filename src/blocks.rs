@@ -27,6 +27,7 @@ pub mod notmuch;
 pub mod nvidia_gpu;
 pub mod pacman;
 pub mod pomodoro;
+pub mod radeontop;
 pub mod sound;
 pub mod speedtest;
 pub mod taskwarrior;
@@ -68,6 +69,7 @@ use self::notmuch::*;
 use self::nvidia_gpu::*;
 use self::pacman::*;
 use self::pomodoro::*;
+use self::radeontop::*;
 use self::sound::*;
 use self::speedtest::*;
 use self::taskwarrior::*;
@@ -266,6 +268,7 @@ pub fn create_block(
         "nvidia_gpu" => block!(NvidiaGpu, id, block_config, shared_config, update_request),
         "pacman" => block!(Pacman, id, block_config, shared_config, update_request),
         "pomodoro" => block!(Pomodoro, id, block_config, shared_config, update_request),
+        "radeontop" => block!(Radeontop, id, block_config, shared_config, update_request),
         "sound" => block!(Sound, id, block_config, shared_config, update_request),
         "speedtest" => block!(SpeedTest, id, block_config, shared_config, update_request),
         "taskwarrior" => block!(Taskwarrior, id, block_config, shared_config, update_request),
